@@ -37,6 +37,14 @@ public class ApiKeyDto implements Serializable {
             return this;
         }
 
+        public void setUserId(Long userId) {
+            this.userId = userId;
+        }
+
+        public void setApiKey(String apiKey) {
+            this.apiKey = apiKey;
+        }
+
         public Builder apiKey(String apiKey) {
             this.apiKey = apiKey;
             return this;

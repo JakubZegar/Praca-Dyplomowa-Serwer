@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface HeatmapDataRepository extends JpaRepository<HeatmapData, Long>, CrudRepository<HeatmapData, Long> {
 
-    @Query(value = "SELECT * FROM heatmapData a WHERE a.apiKey = :apiKey ", nativeQuery = true)
+    @Query(value = "SELECT * FROM heatmap_data a WHERE a.api_key = :apiKey ", nativeQuery = true)
     List<HeatmapData> getHeatmapDataForUser(@Param("apiKey") String apiKey);
 }
 

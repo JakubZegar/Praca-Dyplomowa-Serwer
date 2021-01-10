@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface ApiKeyRepository extends JpaRepository<ApiKey, Long>, CrudRepository<ApiKey, Long> {
 
-    @Query(value = "SELECT * FROM ApiKey a WHERE a.userId = :userId ", nativeQuery = true)
+    @Query(value = "SELECT * FROM api_key a WHERE a.user_id = :userId ", nativeQuery = true)
     ApiKey getApiKeyForExactUser(@Param("userId") Long userId);
 }

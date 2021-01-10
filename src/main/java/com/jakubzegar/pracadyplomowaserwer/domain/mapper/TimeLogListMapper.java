@@ -14,7 +14,6 @@ public class TimeLogListMapper implements Converter<List<TimeLog>, List<TimeLogD
     public List<TimeLogDto> convert(List<TimeLog> from) {
         return from.stream().map(
                 timeLog -> new TimeLogDto.Builder()
-                        .timeLogId(timeLog.getTimeLogId())
                         .apiKey(timeLog.getApiKey())
                         .timeSpent(timeLog.getTimeSpent())
                         .date(timeLog.getDate())

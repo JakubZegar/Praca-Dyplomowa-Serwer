@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class TimeLogDto {
 
-    private Long timeLogId;
     private String apiKey;
     private String timeSpent;
     private Date date;
@@ -12,14 +11,9 @@ public class TimeLogDto {
     public TimeLogDto() {}
 
     private TimeLogDto(Builder builder) {
-        this.timeLogId = builder.timeLogId;
         this.apiKey = builder.apiKey;
         this.timeSpent = builder.timeSpent;
         this.date = builder.date;
-    }
-
-    public Long getTimeLogId() {
-        return timeLogId;
     }
 
     public String getApiKey() {
@@ -35,15 +29,9 @@ public class TimeLogDto {
     }
 
     public static final class Builder {
-        private Long timeLogId;
         private String apiKey;
         private String timeSpent;
         private Date date;
-
-        public Builder timeLogId(Long timeLogId) {
-            this.timeLogId = timeLogId;
-            return this;
-        }
 
         public Builder apiKey(String apiKey){
             this.apiKey = apiKey;

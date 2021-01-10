@@ -9,16 +9,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/key")
+@RequestMapping("/apiKey")
 public class ApiKeyController {
 
     @Autowired
     ApiKeyService apiKeyService;
 
     @CrossOrigin
-    @PostMapping(value = "/get")
-    public ResponseEntity<ApiKeyDto> getKey(@RequestBody Long id) {
-        ApiKeyDto apiKeyDto = apiKeyService.getApiKeyForExactUser(id);
+    @GetMapping(value = "/get/{userId}")
+    public ResponseEntity<ApiKeyDto> getKey(@PathVariable Long userId) {
+        ApiKeyDto apiKeyDto = apiKeyService.getApiKeyForExactUser(userId);
         return new ResponseEntity<>(apiKeyDto, HttpStatus.OK);
     }
 

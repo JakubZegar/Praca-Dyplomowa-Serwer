@@ -12,7 +12,7 @@ public class HeatmapData implements Serializable {
     @Column( name = "heatmapDataId")
     private Long heatmapDataId;
 
-    @Column(name = "heatmapId")
+    @Column(name = "apiKey")
     private String apiKey;
 
     @Column(name = "coordinateX")

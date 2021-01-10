@@ -10,7 +10,7 @@ public class HeatmapDataMapper implements Converter<HeatmapData, HeatmapDataDto>
     @Override
     public HeatmapDataDto convert(HeatmapData from){
         return new HeatmapDataDto.Builder()
-                .heatmapDataId(from.getHeatmapDataId())
+//                .heatmapDataId(from.getHeatmapDataId())
                 .apiKey(from.getApiKey())
                 .coordinateX(from.getCoordinateX())
                 .coordinateY(from.getCoordinateY())

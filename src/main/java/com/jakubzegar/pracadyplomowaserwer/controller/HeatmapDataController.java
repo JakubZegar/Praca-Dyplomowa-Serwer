@@ -20,8 +20,8 @@ public class HeatmapDataController {
     @CrossOrigin
     @PostMapping(value = "/get")
     public ResponseEntity<List<HeatmapDataDto>> getHeatmap(@RequestBody String apiKey) {
-        List<HeatmapDataDto> heatmapDto = heatmapDataService.getHeatmapDataForUser(apiKey);
-        return new ResponseEntity<>(heatmapDto, HttpStatus.OK);
+        List<HeatmapDataDto> heatmapDataDto = heatmapDataService.getHeatmapDataForUser(apiKey);
+        return new ResponseEntity<>(heatmapDataDto, HttpStatus.OK);
     }
 
     @CrossOrigin

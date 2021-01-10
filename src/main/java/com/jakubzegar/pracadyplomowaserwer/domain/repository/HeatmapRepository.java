@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface HeatmapRepository extends JpaRepository<Heatmap, Long>, CrudRepository<Heatmap, Long> {
 
-    @Query(value = "SELECT * FROM heatmap a WHERE a.apiKey = :apiKey ", nativeQuery = true)
+    @Query(value = "SELECT * FROM heatmap a WHERE a.api_key = :apiKey ", nativeQuery = true)
     Heatmap getUsersHeatmap(@Param("apiKey") String apiKey);
 }

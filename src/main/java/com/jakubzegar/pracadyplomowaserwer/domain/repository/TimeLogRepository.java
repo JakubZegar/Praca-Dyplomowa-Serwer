@@ -10,9 +10,9 @@ import java.util.Date;
 import java.util.List;
 
 public interface TimeLogRepository extends JpaRepository<TimeLog, Long>, CrudRepository<TimeLog, Long> {
-    @Query(value = "SELECT * FROM timeLog t WHERE t.apiKey = :apiKey ", nativeQuery = true)
+    @Query(value = "SELECT * FROM time_log t WHERE t.api_key = :apiKey ", nativeQuery = true)
     List<TimeLog> getUsersLogs(@Param("apiKey") String apiKey);
 
-    @Query(value = "SELECT * FROM timeLog t WHERE t.apiKey = :apiKey AND t.date BETWEEN :startDate AND :endDate", nativeQuery = true)
+    @Query(value = "SELECT * FROM time_log t WHERE t.api_key = :apiKey AND t.date BETWEEN :startDate AND :endDate", nativeQuery = true)
     List<TimeLog> getAllBetweenDates(@Param("apiKey") String apiKey, @Param("startDate") Date startDate, @Param("endDate")Date endDate);
 }

@@ -10,7 +10,6 @@ public class TimeLogMapper implements Converter<TimeLog, TimeLogDto> {
     @Override
     public TimeLogDto convert(TimeLog from){
         return new TimeLogDto.Builder()
-                .timeLogId(from.getTimeLogId())
                 .apiKey(from.getApiKey())
                 .timeSpent(from.getTimeSpent())
                 .date(from.getDate())

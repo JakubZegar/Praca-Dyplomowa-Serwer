@@ -34,7 +34,7 @@ public class TimeLogController {
 
     @CrossOrigin
     @PostMapping(value = "/create")
-    public ResponseEntity<?> createHeatmapData(@RequestBody CreateTimeLogDto createTimeLogDto) {
+    public ResponseEntity<?> createTimeLog(@RequestBody CreateTimeLogDto createTimeLogDto) {
         timeLogService.save(createTimeLogDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
