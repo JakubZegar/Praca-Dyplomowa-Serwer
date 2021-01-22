@@ -8,6 +8,9 @@ public class ApiKey implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "apiKeyId")
+    private Long apiKeyId;
+
     @Column(name = "user_id")
     private Long userId;
 
@@ -15,6 +18,14 @@ public class ApiKey implements Serializable {
     private String apiKey;
 
     public ApiKey() {
+    }
+
+    public Long getApiKeyId() {
+        return apiKeyId;
+    }
+
+    public void setApiKeyId(Long apiKeyId) {
+        this.apiKeyId = apiKeyId;
     }
 
     public Long getUserId() {

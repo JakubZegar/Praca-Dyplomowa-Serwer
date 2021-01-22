@@ -11,6 +11,7 @@ import com.jakubzegar.pracadyplomowaserwer.payload.JwtAuthenticationResponse;
 import com.jakubzegar.pracadyplomowaserwer.payload.LoginRequest;
 import com.jakubzegar.pracadyplomowaserwer.payload.SignUpRequest;
 import com.jakubzegar.pracadyplomowaserwer.security.JwtTokenProvider;
+import com.jakubzegar.pracadyplomowaserwer.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +19,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -38,6 +37,9 @@ public class AuthenticationController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    CustomUserDetailsService customUserDetailsService;
 
     @Autowired
     RoleRepository roleRepository;
@@ -93,5 +95,12 @@ public class AuthenticationController {
                 .buildAndExpand(result.getUsername()).toUri();
 
         return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
+    }
+
+    @CrossOrigin
+    @GetMapping("/info/{username}")
+    public ResponseEntity<UserDetails> getInfo(@PathVariable String username) {
+        UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
+        return new ResponseEntity<>(userDetails, HttpStatus.OK);
     }
 }

@@ -36,4 +36,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         return UserPrincipal.create(user);
     }
+
+    @Transactional
+    public UserDetails findByUsername(String username) {
+        User user = userRepository.findByUsername(username).orElseThrow(
+                () -> new UsernameNotFoundException("User not found with name : " + username)
+        );
+
+        return UserPrincipal.create(user);
+    }
 }
