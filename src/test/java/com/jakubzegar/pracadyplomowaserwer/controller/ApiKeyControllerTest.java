@@ -50,7 +50,9 @@ class ApiKeyControllerTest {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtTokenProvider.generateToken(authentication);
         assertNotNull(token);
-        mockMvc.perform(MockMvcRequestBuilders.get("/apiKey/get/1").header("Authorization", "Bearer " + token)).andExpect(status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.get("/apiKey/get/1")
+                .header("Authorization", "Bearer " + token))
+                .andExpect(status().isOk());
     }
 
     @Test
